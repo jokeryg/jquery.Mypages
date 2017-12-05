@@ -1,7 +1,7 @@
 # jquery.Mypages
 基于Jquery的分页插件
 
-###使用方法
+### 使用方法
 ```html
 <html>
     <link href="myPages.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
 ```
 
 
-###参数说明
+### 参数说明
 ```javascript
     var defaluts = {
         url: "/{pageNo}-{pageSize}",   //页码跳转链接 {pageNo}与{pageSize}为固定占位符
