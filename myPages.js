@@ -2,8 +2,8 @@
 (function ($) {
     $.fn.extend({
         "myPages": function (options) {
-            var opts = $.extend({}, defaluts, options); 
-            this.each(function () {  
+            var opts = $.extend({}, defaluts, options);
+            this.each(function () {
                 var url = opts.url;
                 var pageNo = opts.pageNo
                 var pageSize = opts.pageSize
@@ -14,21 +14,28 @@
                 var firstText = opts.firstText
                 var lastText = opts.lastText
                 var showPageButton = opts.showPageButton
-                var isMobile = opts.isMobile
                 url = url.replaceAll("{pageSize}", pageSize);
-                var prePage = pageNo == firstPage?pageNo:pageNo-1;
-                var nextPage = pageNo == lastPage?pageNo:pageNo+1;
+                var prePage = pageNo == firstPage ? pageNo : pageNo - 1;
+                var nextPage = pageNo == lastPage ? pageNo : pageNo + 1;
+
+                var isMobile = false;
+                var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+                if (width < 768) {
+                    isMobile = true;
+                }
+
+
                 //生成HTML
                 var html = "<nav><ul class='myPages'>";
-                if(!isMobile){
-                    html+= "<li><a href='" + url.replaceAll("{pageNo}", firstPage) + "'> "+firstText+" </a></li>";
+                if (!isMobile) {
+                    html += "<li><a href='" + url.replaceAll("{pageNo}", firstPage) + "'> " + firstText + " </a></li>";
                 }
                 if (pageNo == firstPage) {
                     //html += "<li  class='disabled'><a class='noClickPage' href='javascript:void(0)'>上一页</a></li>";
                 } else {
-                    html += "<li><a href='" + url.replaceAll("{pageNo}", prePage) + "'>"+preText+"</a></li>";
+                    html += "<li><a href='" + url.replaceAll("{pageNo}", prePage) + "'>" + preText + "</a></li>";
                 }
-                if(!isMobile) {
+                if (!isMobile) {
                     //计算循环
                     var temp = showPageButton / 2;
                     var begin = firstPage;
@@ -61,12 +68,12 @@
                 if (pageNo == lastPage) {
                     //html += "<li class='disabled'><a class='noClickPage' href='javascript:void(0)'>下一页</a></li>";
                 } else {
-                    html += "<li><a href='" + url.replaceAll("{pageNo}", nextPage) + "'>"+nextText+"</a></li>";
+                    html += "<li><a href='" + url.replaceAll("{pageNo}", nextPage) + "'>" + nextText + "</a></li>";
                 }
-                if(!isMobile) {
-                    html += "<li><a href='" + url.replaceAll("{pageNo}", lastPage) + "'> "+lastText+" </a></li>";
+                if (!isMobile) {
+                    html += "<li><a href='" + url.replaceAll("{pageNo}", lastPage) + "'> " + lastText + " </a></li>";
                 }
-                html+="</ul></nav>";
+                html += "</ul></nav>";
 
                 $(this).append(html);
                 $(this).addClass("myPages");
@@ -80,13 +87,12 @@
         pageSize: 10,
         firstPage: 1,
         lastPage: 1,
-        preText: "<",
-        nextText: ">",
+        preText: "&lt;",
+        nextText: "&gt;",
         firstText: "«",
         lastText: "»",
         url: "/{pageNo}-{pageSize}",
-        showPageButton: 6,
-        isMobile:false
+        showPageButton: 6
     };
 })(window.jQuery);
 String.prototype.replaceAll = function (s1, s2) {
