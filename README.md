@@ -37,8 +37,8 @@
         lastPage: 1,   //最后一页页码
         preText: "<",   //上一页显示的文字，默认为 <
         nextText: ">",  //下一页显示的文字，默认为 >
-        firstText: "<<",//首页显示的文字,默认为 <<
-        lastText: ">>", //最后一页显示的文字,默认为 >>
+        firstText: "«",//首页显示的文字,默认为 <<
+        lastText: "»", //最后一页显示的文字,默认为 >>
         showPageButton: 6, //显示的页码数量，默认为6
         isMobile:false   //此值为true时只显示上一页与下一页,默认为false
     };

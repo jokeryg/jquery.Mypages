@@ -82,8 +82,8 @@
         lastPage: 1,
         preText: "<",
         nextText: ">",
-        firstText: "<<",
-        lastText: ">>",
+        firstText: "«",
+        lastText: "»",
         url: "/{pageNo}-{pageSize}",
         showPageButton: 6,
         isMobile:false
