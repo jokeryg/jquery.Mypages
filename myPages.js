@@ -18,6 +18,14 @@
                 var prePage = pageNo == firstPage ? pageNo : pageNo - 1;
                 var nextPage = pageNo == lastPage ? pageNo : pageNo + 1;
 
+                //保留原url上的参数
+                var str=location.href; 
+                var num = str.indexOf("?");
+                if(num > -1){
+                    var params = str.substring(num);
+                    url = url + params;
+                }
+
                 var isMobile = false;
                 var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
                 if (width < 768) {
