@@ -1,4 +1,4 @@
-# jquery.Mypages
+# jquery.MyPages
 基于Jquery的分页插件
 
 ### 使用方法
