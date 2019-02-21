@@ -1,4 +1,4 @@
-#pages {
+.pagesDiv,#pages {
     margin: auto;
     padding-left: 20px;
     padding-right: 20px;
@@ -26,6 +26,8 @@
     line-height: 29px;
     color: #909090;
     padding: 0px 10px;
+    text-decoration: none;
+    background: #fff;
 }
 
 .myPages li a:hover {
@@ -33,6 +35,7 @@
     color: #fff;
     border: 1px #50acf5 solid;
     border-radius: 3px;
+    text-decoration: none;
 }
 
 .myPages .active a {
@@ -45,4 +48,23 @@
 .myPages .disabled a:hover {
     cursor: default;
     color: #50acf5;
+}
+
+.myPages input{
+    display: inline-block;
+    width:40px;
+    border: 1px #d0d0d0 solid;
+    border-right:0px;
+    height:30px;
+    padding-top:0;
+    padding-bottom: 0;
+    line-height: 29px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.myPages input+a{
+    display: inline-block;
+    padding-left: 5px;
+    padding-right:5px;
 }
