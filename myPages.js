@@ -18,8 +18,8 @@
                 var prePage = pageNo == firstPage ? pageNo : pageNo - 1;
                 var nextPage = pageNo == lastPage ? pageNo : pageNo + 1;
 
-                //保留原url上的参数
-                var str=location.href; 
+
+                var str=location.href; //取得整个地址栏
                 var num = str.indexOf("?");
                 if(num > -1){
                     var params = str.substring(num);
@@ -27,8 +27,9 @@
                 }
 
                 var isMobile = false;
-                var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-                if (width < 768) {
+                var width = $(this).parent().width();//(window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+                if (width < 576) {
                     isMobile = true;
                 }
 
@@ -80,11 +81,39 @@
                 }
                 if (!isMobile) {
                     html += "<li><a href='" + url.replaceAll("{pageNo}", lastPage) + "'> " + lastText + " </a></li>";
+                    html +="<li><input id='txtQuick' type='text' value='"+pageNo+"'><a id='btnQuick' href='javascript:void(0)'>跳转</a></li>";
                 }
                 html += "</ul></nav>";
 
                 $(this).append(html);
                 $(this).addClass("myPages");
+
+                $("#txtQuick").focus(function () {
+                    $(this).select();
+                }).keyup(function (event) {
+                    if(event.keyCode == 13 || event.keyCode == 108){
+                        $("#btnQuick").click();
+                    }else{
+                        var val = $(this).val();
+                        if(val.length == 1) {
+                            val = val.replace(/[^1-9]/g, '')
+                        } else {
+                            val = val.replace(/\D/g, '')
+                        }
+                        if(val.length == 0){
+                            val = 1;
+                        }else if(val < 1){
+                            val = 1;
+                        }else if(val > lastPage){
+                            val = lastPage;
+                        }
+                        $(this).val(val);
+                    }
+                })
+
+                $("#btnQuick").click(function(){
+                    window.location.href = url.replaceAll("{pageNo}",$("#txtQuick").val());
+                })
             });
 
         }
